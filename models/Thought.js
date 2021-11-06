@@ -1,8 +1,35 @@
 const { Schema, model } = require('mongoose');
 const dateFormat, { masks } = require('dateformat');
 
-//create the Thought schema
+//create the Reaction schema (will be a subdocument in the Thought model)
+const ReactionSchema = new Schema({
+    reactionId:{
+        type: Schema.Types.ObjectId,
+        default: () => new Types.ObjectId()
+    },
+    reactionBody: {
+        type: String,
+        required: "Please include your reaction text!",
+        maxlength: 280
+    },
+    username: {
+        type: String,
+        required: 'Please enter a username'
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        get: (createdAtVal) => dateFormat(createdAtVal, "dddd, mmmm dS, yyyy, h:MM:ss TT")
+    }
+},
+{
+    toJSON: {
+        getters: true
+    }
+}
+);
 
+//create the Thought schema
 const ThoughtSchema = new Schema({
     thoughtText:{
         type: String,
@@ -13,13 +40,13 @@ const ThoughtSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-        get: (createdAtVal) => dateFormat(nowcreatedAtVal, "dddd, mmmm dS, yyyy, h:MM:ss TT")
+        get: (createdAtVal) => dateFormat(createdAtVal, "dddd, mmmm dS, yyyy, h:MM:ss TT")
     },
     username: {
         type: String,
         required: 'Please include a username'
     },
-    reactions: [],
+    reactions: [ReactionSchema]
 },
     {
         toJSON:{
