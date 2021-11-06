@@ -1,0 +1,27 @@
+{
+  "name": "get-social-api",
+  "version": "1.0.0",
+  "description": "Social Network API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderjake91/GET-social-API.git"
+  },
+  "keywords": [
+    "API"
+  ],
+  "author": "coderjake91",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coderjake91/GET-social-API/issues"
+  },
+  "homepage": "https://github.com/coderjake91/GET-social-API#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12"
+  }
+}
