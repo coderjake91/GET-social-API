@@ -29,8 +29,9 @@ const thoughtController = {
     //POST a new thought (also push the created thoughts to the associated user)
     createThought({params, body}, res) {
         console.log(body);
-        Thought.create({ body })
+        Thought.create(body)
             .then(({ _id }) => {
+                console.log(_id);
                 return User.findOneAndUpdate(
                     { _id: params.userId },
                     { $push: { thoughts: _id }},
@@ -58,11 +59,7 @@ const thoughtController = {
                     res.status(400).json({message: "No though found with this id!"});
                     return;
                 }
-                return User.findOneAndUpdate(
-                    { _id: params.userId },
-                    { $pull: { thoughts: params.thoughtId }},
-                    { new: true }
-                );
+                res.json(dbThoughtData);
             })
             .catch(err => {
                 console.log(err);

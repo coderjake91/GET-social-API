@@ -67,7 +67,7 @@ const userController = {
             })
             .catch(err => res.status(400).json(err));
     },
-    //PUT a new friend to the user's friend list by friend _id (use $push)
+    //POST a new friend to the user's friend list by friend _id (use $push)
     addFriend({ params }, res) {
         //will eventually need to validate the existence of the friend's User profile here (use .findById)
         //User.findById()
@@ -85,7 +85,7 @@ const userController = {
         })
         .catch(err => res.status(400).json(err));
     },
-    //PUT a friend from the user's friend list by friend _id (use $pull)
+    //DELETE a friend from the user's friend list by friend _id (use $pull)
     deleteFriend({ params }, res) {
         //will eventually need to validate the existence of the friend's User profile here (use .findById)
         //User.findById()
