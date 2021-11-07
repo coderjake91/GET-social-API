@@ -3,7 +3,7 @@ const { User, Thought } = require('../models');
 //Thought controller
 const thoughtController = {
     //GET all thoughts
-    getAllThoughts() {
+    getAllThoughts(req, res) {
         Thought.find({})
             .then(dbThoughtData => res.json(dbThoughtData))
             .catch(err => {

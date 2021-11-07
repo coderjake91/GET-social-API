@@ -21,8 +21,10 @@
   },
   "homepage": "https://github.com/coderjake91/GET-social-API#readme",
   "dependencies": {
+    "date-format": "^3.0.0",
     "dateformat": "^5.0.2",
     "express": "^4.17.1",
+    "moment": "^2.29.1",
     "mongoose": "^6.0.12"
   }
 }
